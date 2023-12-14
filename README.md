@@ -1,41 +1,43 @@
 # PCA-Manual-Implementation
 
-Principal Component Analysis (PCA) is a dimensionality reduction technique commonly used in machine learning and data analysis. Here are the steps to implement PCA:
 
-1. **Data Preprocessing:**
-   - Ensure that your data is numeric and standardized (mean-centered and scaled to unit variance) since PCA is sensitive to the scale of the variables.
+## Overview
+Principal Component Analysis (PCA) is a dimensionality reduction technique commonly used in machine learning and data analysis. This README provides step-by-step instructions for implementing PCA.
 
-2. **Compute the Covariance Matrix:**
-   - Calculate the covariance matrix of the standardized data. The covariance matrix is a square matrix that represents the relationships between all pairs of variables.
+## Implementation Steps
 
-   \[ \text{Covariance matrix} (C) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^T \cdot (X_i - \bar{X}) \]
+### 1. Data Preprocessing
+Ensure that your data is numeric and standardized (mean-centered and scaled to unit variance) since PCA is sensitive to the scale of the variables.
 
-   where \(X_i\) is the standardized data vector and \(\bar{X}\) is the mean vector.
+### 2. Compute the Covariance Matrix
+Calculate the covariance matrix of the standardized data. The covariance matrix is a square matrix that represents the relationships between all pairs of variables.
 
-3. **Compute Eigenvectors and Eigenvalues:**
-   - Compute the eigenvectors and eigenvalues of the covariance matrix. Eigenvectors represent the directions of maximum variance, and eigenvalues represent the magnitude of the variance in those directions.
+\[ \text{Covariance matrix} (C) = \frac{1}{n-1} \sum_{i=1}^{n} (X_i - \bar{X})^T \cdot (X_i - \bar{X}) \]
 
-   \[ \text{C} \cdot \text{v} = \lambda \cdot \text{v} \]
+where \(X_i\) is the standardized data vector and \(\bar{X}\) is the mean vector.
 
-   where \(\text{v}\) is the eigenvector and \(\lambda\) is the corresponding eigenvalue.
+### 3. Compute Eigenvectors and Eigenvalues
+Compute the eigenvectors and eigenvalues of the covariance matrix. Eigenvectors represent the directions of maximum variance, and eigenvalues represent the magnitude of the variance in those directions.
 
-4. **Sort Eigenvalues:**
-   - Sort the eigenvalues in descending order. The corresponding eigenvectors should be reordered accordingly.
+\[ \text{C} \cdot \text{v} = \lambda \cdot \text{v} \]
 
-5. **Choose Principal Components:**
-   - Select the top \(k\) eigenvectors based on the desired number of principal components (\(k\)) or the variance you want to retain.
+where \(\text{v}\) is the eigenvector and \(\lambda\) is the corresponding eigenvalue.
 
-6. **Create Projection Matrix:**
-   - Form a projection matrix (\(P\)) by stacking the selected eigenvectors as columns.
+### 4. Sort Eigenvalues
+Sort the eigenvalues in descending order. The corresponding eigenvectors should be reordered accordingly.
 
-   \[ P = [v_1, v_2, \ldots, v_k] \]
+### 5. Choose Principal Components
+Select the top \(k\) eigenvectors based on the desired number of principal components (\(k\)) or the variance you want to retain.
 
-7. **Project Data onto Lower-Dimensional Space:**
-   - Project the original data (\(X\)) onto the lower-dimensional space using the projection matrix:
+### 6. Create Projection Matrix
+Form a projection matrix (\(P\)) by stacking the selected eigenvectors as columns.
 
-   \[ \text{PCA} = X \cdot P \]
+\[ P = [v_1, v_2, \ldots, v_k] \]
 
-   The resulting matrix \(\text{PCA}\) contains the principal components of the data.
+### 7. Project Data onto Lower-Dimensional Space
+Project the original data (\(X\)) onto the lower-dimensional space using the projection matrix:
 
+\[ \text{PCA} = X \cdot P \]
 
+The resulting matrix \(\text{PCA}\) contains the principal components of the data.
 
